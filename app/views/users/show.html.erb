@@ -1,29 +1,45 @@
 <p id="notice"><%= notice %></p>
+<% if @images.count > 0 %>
+<div class="text-center">
+  <h1>Image Feed</h1><br>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @user.user_id %>
-</p>
+<div id='pins' class='transitions-enabled'>
+  <% @images.each do |i| %>
+    <div class="box panel panel-default">
+      <%= link_to image_tag(i[:url]) %>
+        <div class="panel-body">
+          <h2><%= "image title" %></h2><hr>
+          <p>Uploaded <%= time_ago_in_words 3.minutes.from_now%></p>
+        </div>
+        <div class="panel-footer">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="btn-group pull-left">
+                <span class='glyphicon glyphicon-heart'>
+                  <%= i[:like] %>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <% end %>
+</div>
 
-<p>
-  <strong>User name:</strong>
-  <%= @user.user_name %>
-</p>
+<% else %>
+<div class="text-center">
+  <h1>No images to dislay :-(</h1>
+</div>
+<% end %>
 
-<p>
-  <strong>Profile picture:</strong>
-  <%= @user.profile_picture %>
-</p>
-
-<p>
-  <strong>Full name:</strong>
-  <%= @user.full_name %>
-</p>
-
-<p>
-  <strong>Access token:</strong>
-  <%= @user.access_token %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<script>
+$(function(){
+  $('#pins').imagesLoaded(function(){
+    $('#pins').masonry({
+      itemSelector: '.box',
+      isFitWidth: true
+    })
+  })
+})
+</script>

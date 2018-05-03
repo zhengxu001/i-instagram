@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @feed = @user.recent_media(params[:next_url])
-    p @feed
+    @images = @user.recent_media(params[:next_url])
   end
 
   # def new

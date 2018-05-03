@@ -6,6 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 gem 'instagram'
+gem 'masonry-rails'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
 gem 'rails', '~> 5.1.6'
 gem 'sqlite3'
 gem 'puma', '~> 3.7'
