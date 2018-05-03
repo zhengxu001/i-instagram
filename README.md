@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+### ToDo
+- [X] Integrate Instagram API
+- [X] Get User's Feed
+- [ ] Show User's Feed
+- [ ] User Revoke Authentication(logout)
+- [ ] Error Handling
+- [ ] API Test with RSpec
+- [ ] Deployment
