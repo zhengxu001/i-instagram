@@ -1,0 +1,46 @@
+<% images=@images if @images %>
+<% images.each do |i| %>
+  <div class="box panel panel-default">    
+    <img id="myImg" src=<%=i[:url]%> />
+    <div class="panel-body">
+      <h2><%= "image title" %></h2><hr>
+      <p>Uploaded <%= time_ago_in_words 3.minutes.from_now%></p>
+    </div>
+    <div class="panel-footer">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="btn-group pull-left">
+            <span class='glyphicon glyphicon-heart'>
+              <%= i[:like] %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script>
+var imgs = document.querySelectorAll("[id='myImg']");
+for(var i = 0; i < imgs.length; i++){
+  var img = imgs[i]
+  var modal = document.getElementById('myModal');
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = "Suprise!";
+  }
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() { 
+    modal.style.display = "none";
+  }  
+}
+</script>

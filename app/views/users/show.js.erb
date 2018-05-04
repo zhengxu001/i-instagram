@@ -1,0 +1,7 @@
+$('#pins').append('<%= j render("images", images: @images) %>').masonry( 'reload' );
+<% if @images.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@images) %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>
