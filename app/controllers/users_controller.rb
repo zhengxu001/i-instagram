@@ -2,7 +2,8 @@ require 'will_paginate/array'
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @images = @user.recent_media(params[:next_url]).paginate(page: params[:page], per_page:6)
+    @images = @user.recent_media(params[:next_url]) * 5
+    @images = @images.paginate(page: params[:page], per_page: 6)
   end
 
   # def new

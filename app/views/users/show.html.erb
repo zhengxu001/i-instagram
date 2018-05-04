@@ -13,6 +13,8 @@
 <div id="infinite-scrolling">
   <%= will_paginate @images%>
 </div>
+<div class="bottom">
+</div>
 
 <% else %>
 <div class="text-center">
@@ -20,14 +22,8 @@
 </div>
 <% end %>
 
-<script>
-$(function(){
-  $('#pins').imagesLoaded(function(){
-    $('#pins').masonry({
-      itemSelector: '.box',
-      isFitWidth: true,
-      isAnimated: true
-    })
-  })
-})
-</script>
+<a id="back2Top" title="Back to top" href="#">&#10148;</a>
+
+<!-- <script>
+
+</script> -->

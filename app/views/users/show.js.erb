@@ -2,6 +2,33 @@ $('#pins').append('<%= j render("images", images: @images) %>').masonry( 'reload
 <% if @images.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate(@images) %>');
 <% else %>
+  $('.bottom').replaceWith('<div class="text-center"> <h1>No images to dislay :-(</h1> </div>');
   $(window).off('scroll');
   $('.pagination').remove();
 <% end %>
+
+$(window).scroll(function() {
+    var height = $(window).scrollTop();
+    if (height > 100) {
+        $('#back2Top').fadeIn();
+    } else {
+        $('#back2Top').fadeOut();
+    }
+});
+$(document).ready(function() {
+    $("#back2Top").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    });
+
+});
+
+$(function(){
+  $('#pins').imagesLoaded(function(){
+    $('#pins').masonry({
+      itemSelector: '.box',
+      isFitWidth: true
+    })
+  })
+})
