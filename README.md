@@ -25,8 +25,8 @@ Things you may want to cover:
 ### ToDo
 - [X] Integrate Instagram API
 - [X] Get User's Feed
-- [ ] Show User's Feed
-- [ ] User Revoke Authentication(logout)
-- [ ] Error Handling
+- [X] Show User's Feed
+- [X] User Revoke Authentication(logout)
+- [X] Error Handling
 - [ ] API Test with RSpec
 - [ ] Deployment

@@ -17,14 +17,10 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=@current_user.user_name%><span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'Uploads', "http://www.baidu.com"%></li>
-              <li><%= link_to 'Comments', "http://www.baidu.com"%></li>
-              <li role="separator" class="divider"></li>
-              <li><%= link_to 'My Account', "http://www.baidu.com"%></li>
+              <li><%= link_to 'Uploads', user_path(@current_user)%></li>
+              <li><%= link_to 'Comments', user_path(@current_user)%></li>
             </ul>
           </li>
-          <li><%= link_to 'Feed', "http://www.baidu.com" %></li>
-          <li><%= link_to 'Upload Image +', "http://www.baidu.com" %></li>
         </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -34,11 +30,7 @@
     <% end %>
 
     <% if !logged_in? %>
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <a href="/authorize2">Connect with Instagram</a>
-        </ul>
-      </div>
+      <% controller.redirect_to root_path %>
     <% end %>
   </div>
 </nav>

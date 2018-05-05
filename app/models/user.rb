@@ -34,7 +34,7 @@ class User < ApplicationRecord
     # If there is no next_url provided, get the most recent 20 images
     # User.client.user_recent_media
     images = []
-    iamges_info = Instagram.client(access_token: '1631492850.7b5b197.ef5d5670b150466783ab8176acfc200f').user_recent_media
+    iamges_info = Instagram.client(access_token: '1631492850.7b5b197.e610dcdaef0844dd94d0e13c25c8afe5').user_recent_media
     iamges_info.each do |raw_image_info|
       images << Image.build_image(raw_image_info)
     end
