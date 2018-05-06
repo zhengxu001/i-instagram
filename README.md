@@ -1,5 +1,5 @@
 # README
-This project is to Instagram API to get users' feed and show the images with responsive UI. Due to the [sandbox limitation](https://instagram.com/developer/sandbox/), we can only get 20 images in one API call and there is no nextpage url. We're having only on test user
+This project is to use Instagram open API to get users' feed and show the images with responsive UI. Due to the [sandbox limitation](https://instagram.com/developer/sandbox/), we can only get 20 images in one API call and there is no nextpage url. We're having only one test user:
 + username: zhengxu5511@gmail.com
 + password: testpassword
  

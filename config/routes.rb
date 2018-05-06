@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-  get 'home/authenticated'
-  resources :users, only: %i[show destroy] do
+
+  resources :users, only: [:show, :destroy] do
     collection do
       get 'callback'
       get 'connect'

@@ -77,7 +77,6 @@
         1,
         1,
         null,
-        null,
         null
       ],
       "/Users/zen/i-instagram/app/models/user.rb": [
@@ -122,6 +121,6 @@
         null
       ]
     },
-    "timestamp": 1525639875
+    "timestamp": 1525643619
   }
 }
