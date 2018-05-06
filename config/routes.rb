@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get 'home/authenticated' => "home#authenticated"
   resources :users
   get 'callback' => "users#callback"
-  get 'authorize1' => "users#authorize1"
-  get 'authorize2' => "users#authorize2"
+  get 'connect' => "users#connect"
+  # get 'authorize2' => "users#authorize2"
 end

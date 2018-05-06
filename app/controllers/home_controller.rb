@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
 	def index
-      render :layout => false
+	  if logged_in?
+	  	redirect_to @current_user 
+	  else
+      	render :layout => false
+      end
 	end
 
 	def authenticated
