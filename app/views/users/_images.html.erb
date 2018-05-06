@@ -3,7 +3,7 @@
   <div class="box panel panel-default">    
     <img id="myImg" src=<%=i.uri%> />
     <div class="panel-body">
-      <p>Uploaded <%= time_ago_in_words i.created_time.to_i/1000%> ago</p>
+      <p>Uploaded <%= time_ago_in_words(i.created_time.to_i)%> ago</p>
     </div>
     <div class="panel-footer">
       <div class="row">

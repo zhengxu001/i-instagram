@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  def self.generate(access_token)
-    @access_token =  access_token
+  def self.generate(code)
+    @access_token = Instagram.get_access_token(code).access_token
     raw_user_info = Instagram.client(access_token: @access_token).user
-    user_info = {
+    {
       access_token: @access_token,
       user_name: raw_user_info.username,
       user_id: raw_user_info.id,
@@ -11,14 +11,14 @@ class User < ApplicationRecord
     }
   end
 
-  def recent_media(next_url)
+  def recent_media(_next_url)
     # Get images of next page if next_url
     # If there is no next_url provided, get the most recent 20 images
     images = []
-    iamges_info = Instagram.client(access_token: self.access_token).user_recent_media
+    iamges_info = Instagram.client(access_token: access_token).user_recent_media
     iamges_info.each do |raw_image_info|
       images << Image.new(raw_image_info)
     end
-    return images
+    images
   end
 end

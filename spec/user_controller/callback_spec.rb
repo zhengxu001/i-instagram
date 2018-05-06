@@ -1,8 +1,8 @@
 require 'rails_helper'
-BASIC_CODE = '123456'
-ERROR = 'test error'
-INSTAGRAM_HOST = 'api.instagram.com'
-RSpec.describe UsersController, :type => :controller do
+BASIC_CODE = '123456'.freeze
+ERROR = 'test error'.freeze
+INSTAGRAM_HOST = 'api.instagram.com'.freeze
+RSpec.describe UsersController, type: :controller do
   context 'users connect to instagram' do
     it 'should be redirected to instagram with correct client information' do
       get :connect
@@ -20,7 +20,6 @@ RSpec.describe UsersController, :type => :controller do
         prepared_user
         stub_instagram_access_token_api
         stub_instagram_user_info_api
-        access_hash = JSON.parse file_fixture('access_token.json').read
         original_user_count = User.count
         get :callback, params: { code: BASIC_CODE }
         expect(response).to have_http_status(302)

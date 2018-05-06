@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= begin
       User.find(session[:user_id])
-    rescue Exception => e
+    rescue StandardError
       nil
     end if session[:user_id]
   end
@@ -16,8 +16,6 @@ class ApplicationController < ActionController::Base
 
   # prevents users that aren't logged in from accessing certain pages
   def authorize
-    unless logged_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless logged_in?
   end
 end
