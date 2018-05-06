@@ -1,7 +1,10 @@
 require 'rails_helper'
 FAKE_USER_ID = -1
+
 RSpec.describe UsersController, type: :controller do
+
   context 'Logout and Delete Session' do
+
     it 'with valid seesion' do
       prepared_user
       @prepared_user.save

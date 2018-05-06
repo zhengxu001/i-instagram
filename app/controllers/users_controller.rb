@@ -26,7 +26,11 @@ class UsersController < ApplicationController
     rescue StandardError
       nil
     end
-    redirect_to(root_path) if user_info.nil?
+    if user_info.nil?
+      redirect_to root_path
+      flash[:alert] = 'Something wrong when getting Instagram access_token, Please try again!'
+      return
+    end
     @user = User.find_or_create_by(user_id: user_info[:user_id])
     @user.update user_info
     if @user.save

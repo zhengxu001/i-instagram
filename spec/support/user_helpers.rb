@@ -14,6 +14,16 @@ module UserHelpers
       .to_return(status: 200, body: file_fixture('images.json').read, headers: {})
   end
 
+  def stub_instagram_access_token_api_with_error
+    stub_request(:post, 'https://api.instagram.com/oauth/access_token/')
+      .to_return(status: 400)
+  end
+
+  def stub_instagram_image_api_with_error
+    stub_request(:get, 'https://api.instagram.com/v1/users/self/media/recent.json?access_token=fb2e77d.47a0479900504cb3ab4a1f626d174d2d')
+      .to_return(status: 400)
+  end
+
   def prepared_user
     @prepared_user ||= User.new(prepared_data)
     @prepared_user.save
