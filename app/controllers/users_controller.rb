@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :authorize, only: %i[show destroy]
   def show
     redirect_to @current_user if @current_user.id != params[:id].to_i
-    @images = @current_user.recent_media(params[:next_url]) * 4
+    @images = begin
+      @current_user.recent_media(params[:next_url]) * 4
+    rescue StandardError
+      []
+    end
     @images = @images.paginate(page: params[:page], per_page: 6)
   end
 
@@ -17,7 +21,12 @@ class UsersController < ApplicationController
       redirect_to root_path
       return
     end
-    user_info = User.generate(params['code'])
+    user_info = begin
+      User.generate(params['code'])
+    rescue StandardError
+      nil
+    end
+    redirect_to(root_path) if user_info.nil?
     @user = User.find_or_create_by(user_id: user_info[:user_id])
     @user.update user_info
     if @user.save

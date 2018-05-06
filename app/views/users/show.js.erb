@@ -3,6 +3,6 @@ $('#pins').append('<%= j render("images", images: @images) %>').masonry( 'reload
   $('.pagination').replaceWith('<%= j will_paginate(@images) %>');
   $('.pagination').hide();
 <% else %>
-  $('.bottom').replaceWith('<div class="text-center"> <h1>No images to display :-(</h1> </div>');
+  $('.bottom').replaceWith('<div class="text-center" id="buzz"> <h1>No images to display :-(</h1> </div>');
   $('.pagination').remove();
 <% end %>
