@@ -3,7 +3,7 @@
   <div class="box panel panel-default">    
     <img id="myImg" src=<%=i.uri%> />
     <div class="panel-body">
-      <p>Uploaded <%= time_ago_in_words i.created_time.to_i*1000%> ago</p>
+      <p>Uploaded <%= time_ago_in_words i.created_time.to_i/1000%> ago</p>
     </div>
     <div class="panel-footer">
       <div class="row">
@@ -35,7 +35,6 @@ for(var i = 0; i < imgs.length; i++){
   img.onclick = function(){
     modal.style.display = "block";
     modalImg.src = this.src;
-    captionText.innerHTML = "Suprise!";
   }
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function() { 

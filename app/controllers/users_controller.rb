@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize, only: [:show, :destroy]
   def show
     redirect_to @current_user if (@current_user.id != params[:id].to_i)
-    @images = @current_user.recent_media(params[:next_url]) * 5
+    @images = @current_user.recent_media(params[:next_url]) * 4
     @images = @images.paginate(page: params[:page], per_page: 6)
   end
 
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def callback
     if params["error"].present?
       flash[:alert] = "Something wrong with Instagram Authorization, Please try again!"
-      render 'home/index'
+      redirect_to root_path
       return
     end
     access_token = Instagram.get_access_token(params["code"]).access_token

@@ -16,6 +16,8 @@ module UserHelpers
 
   def prepared_user
     @prepared_user ||= User.new(prepared_data)
+    @prepared_user.save
+    return @prepared_user
   end
 
   def delete_prepared_user
@@ -24,7 +26,7 @@ module UserHelpers
 
   def prepared_data
     @prepared_data ||= {
-      access_token: 'fb2e77d.47a0479900504cb3ab4a1f626d174d2d2',
+      access_token: 'fb2e77d.47a0479900504cb3ab4a1f626d174d2d',
       user_name: 'picasso',
       user_id: '1631492851',
       profile_picture: 'test_path',

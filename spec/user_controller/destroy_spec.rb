@@ -5,8 +5,19 @@ RSpec.describe UsersController, :type => :controller do
       prepared_user
       @prepared_user.save
       delete :destroy, params: { id: @prepared_user.id }, session: { user_id: @prepared_user.id}
-      # expect(response).to have_http_status(302)
-      # expect(User.count).to eq original_user_count
+      expect(response).to have_http_status(302)
+      # User's Session has been cleared
+      expect(session[:user_id]).to eq nil
+      delete_prepared_user
+    end
+
+    it 'without valid seesion' do
+      prepared_user
+      @prepared_user.save
+      delete :destroy, params: { id: @prepared_user.id }, session: { user_id: -1}
+      expect(response).to have_http_status(302)
+      # User's Session Does not Change
+      expect(session[:user_id]).to eq -1
       delete_prepared_user
     end
   end
