@@ -37,6 +37,7 @@ group :development do
 end
 
 group :production do
+  gem 'simplecov'
   gem 'rails_12factor'
 end
 

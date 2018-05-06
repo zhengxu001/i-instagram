@@ -1,10 +1,9 @@
 class Image
-  def self.build_image(raw_image_info)
-    image = {
-        url: raw_image_info.images.standard_resolution.url,
-        like: raw_image_info.likes.count,
-        created_at: raw_image_info.created_time
-      }
+  attr_accessor :created_time, :likes_count, :uri
+  def initialize(raw_image_info)
+    @uri         = raw_image_info.images.standard_resolution.url
+    @likes_count = raw_image_info.likes.count
+    @created_at  = raw_image_info.created_time
   end
 end
   

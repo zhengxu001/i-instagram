@@ -1,17 +1,16 @@
 <% images=@images if @images %>
 <% images.each do |i| %>
   <div class="box panel panel-default">    
-    <img id="myImg" src=<%=i[:url]%> />
+    <img id="myImg" src=<%=i.uri%> />
     <div class="panel-body">
-      <h3><%= "image title" %></h3><hr>
-      <p>Uploaded <%= time_ago_in_words 3.minutes.from_now%></p>
+      <p>Uploaded <%= time_ago_in_words i.created_time.to_i*1000%> ago</p>
     </div>
     <div class="panel-footer">
       <div class="row">
         <div class="col-md-4">
           <div class="btn-group pull-left">
             <span class='glyphicon glyphicon-heart'>
-              <%= i[:like] %>
+              <%= i.likes_count %>
             </span>
           </div>
         </div>

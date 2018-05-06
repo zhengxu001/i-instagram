@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= begin
+      User.find(session[:user_id])
+    rescue Exception => e
+      nil
+    end if session[:user_id]
   end
 
   def logged_in?
@@ -13,7 +17,7 @@ class ApplicationController < ActionController::Base
   # prevents users that aren't logged in from accessing certain pages
   def authorize
     unless logged_in?
-      redirect_to new_user_path
+      redirect_to root_path
     end
   end
 end

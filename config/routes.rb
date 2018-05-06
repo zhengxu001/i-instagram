@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root to: "home#index"
-  get 'home/authenticated' => "home#authenticated"
-  resources :users
-  get 'callback' => "users#callback"
-  get 'connect' => "users#connect"
-  # get 'authorize2' => "users#authorize2"
+  get 'home/authenticated'
+  resources :users, only: [:show, :destroy] do
+    collection do
+      get 'callback'
+      get 'connect'
+    end
+  end
 end
